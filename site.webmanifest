@@ -1,0 +1,12 @@
+{
+  "name": "Fernanda Soares — Fisioterapia Pericial e Ergonomia",
+  "short_name": "Fernanda Soares",
+  "lang": "pt-BR",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f8f4f1",
+  "theme_color": "#654552",
+  "icons": [
+    {"src": "/assets/fernanda-soares.jpeg", "sizes": "1200x1600", "type": "image/jpeg", "purpose": "any"}
+  ]
+}

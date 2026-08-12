@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "policy": "Nenhuma integração que envie dados ou carregue pixels é ativada sem configuração, finalidade e consentimento aplicáveis.",
+  "channels": [
+    {"id": "whatsapp", "status": "active_cta", "mode": "wa.me", "future": "WhatsApp Business Platform e webhooks"},
+    {"id": "instagram", "status": "active_organic", "handle": "@fernandafisio_pericias", "future": "Meta Business Suite e campanhas"},
+    {"id": "facebook", "status": "pending_account", "future": "Página empresarial, caixa unificada e Lead Ads"},
+    {"id": "tiktok", "status": "pending_account", "future": "Business Account, conteúdo e Instant Forms"},
+    {"id": "google_business", "status": "pending_domain", "future": "Perfil da Empresa, avaliações e mensuração local"},
+    {"id": "search_console", "status": "pending_domain", "future": "Verificação DNS e sitemap"},
+    {"id": "linkedin", "status": "recommended_manual", "future": "Perfil profissional e relacionamento B2B"}
+  ],
+  "infrastructure": [
+    {"id": "resend", "status": "prepared_disabled", "purpose": "resposta transacional e notificações do formulário"},
+    {"id": "crm_webhook", "status": "schema_ready_disabled", "schema": "lead-capture.schema.json"},
+    {"id": "cloudflare_web_analytics", "status": "recommended_disabled", "purpose": "métricas agregadas do site"},
+    {"id": "meta_pixel", "status": "disabled", "requires": "campanha, política e gestão de consentimento"},
+    {"id": "tiktok_pixel", "status": "disabled", "requires": "campanha, política e gestão de consentimento"},
+    {"id": "turnstile", "status": "prepared_disabled", "purpose": "antispam do formulário"}
+  ]
+}
