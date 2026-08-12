@@ -9,6 +9,10 @@ WhatsApp; não existe banco público de contatos.
 O site divulga somente Instagram, LinkedIn, o e-mail
 `contato@fernandafsoares.com.br` e WhatsApp.
 
+Os ícones de canais usam Font Awesome Free 6.7.2, disponibilizado sob CC BY
+4.0. A assinatura FS e a composição visual dos serviços são ativos próprios do
+projeto.
+
 ## Acessos
 
 - Zoho Mail: serviço externo oficial.
