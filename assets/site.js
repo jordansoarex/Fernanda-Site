@@ -87,22 +87,7 @@ function bindLeadForm(){
   });
 }
 
-async function revealLocalReview(){
-  if(!(location.hostname.endsWith(".local")||["127.0.0.1","localhost"].includes(location.hostname)))return;
-  try{
-    const response=await fetch("/api/local/portfolio-review");if(!response.ok)return;
-    const data=await response.json(),list=qs("#review-list");
-    if(!list)return;
-    (data.references||[]).forEach(item=>{
-      const card=document.createElement("div"),name=document.createElement("b"),note=document.createElement("span");
-      name.textContent=item.name;note.textContent=item.note;card.append(name,note);list.append(card);
-    });
-    qsa(".staging-only").forEach(element=>{element.hidden=false});
-  }catch{}
-}
-
 document.addEventListener("DOMContentLoaded",()=>{
   captureAttribution();configureChannels();bindMenu();bindLeadForm();
-  revealLocalReview();
   qs("[data-year]")?.replaceChildren(String(new Date().getFullYear()));
 });
