@@ -4,6 +4,11 @@ Site público de `fernandafsoares.com.br`, separado dos sistemas internos e dos
 dados de leads. O formulário funciona no navegador e encaminha a solicitação ao
 WhatsApp; não existe banco público de contatos.
 
+## Canais públicos
+
+O site divulga somente Instagram, LinkedIn, o e-mail
+`contato@fernandafsoares.com.br` e WhatsApp.
+
 ## Acessos
 
 - Zoho Mail: serviço externo oficial.
