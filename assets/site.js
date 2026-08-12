@@ -4,7 +4,7 @@ const SITE_CONFIG={
   facebook:"",
   tiktok:"",
   googleBusiness:"",
-  institutionalEmail:"",
+  institutionalEmail:"contato@fernandafsoares.com.br",
   leadEndpoint:""
 };
 
