@@ -1,3 +1,5 @@
+document.documentElement.classList.add("js");
+
 const SITE_CONFIG={
   whatsapp:"5592993547755",
   instagram:"https://instagram.com/fernandafisio_pericias",
@@ -36,10 +38,14 @@ function whatsappUrl(message,source){
 
 function configureChannels(){
   qsa("[data-whatsapp]").forEach(link=>{
-    const message=link.dataset.message||"Olá, Fernanda. Gostaria de conversar sobre apoio técnico pericial para uma empresa.";
-    const attribution=captureAttribution();
-    link.href=whatsappUrl(message,attribution.utm_source||document.title);
+    const message=link.dataset.message||"Olá, Fernanda. Gostaria de conversar sobre apoio técnico pericial.";
+    link.href=whatsappUrl(message,"Site");
     link.target="_blank";link.rel="noopener";
+    if(link.matches(".button,.nav-cta")&&!link.querySelector(".button-icon")){
+      const icon=document.createElement("img");
+      icon.className="button-icon";icon.src="assets/icon-whatsapp.svg";icon.alt="";
+      link.prepend(icon);
+    }
     link.addEventListener("click",()=>track("whatsapp_click",{placement:link.dataset.placement||"site"}));
   });
   const channels={instagram:SITE_CONFIG.instagram,linkedin:SITE_CONFIG.linkedin};
@@ -47,7 +53,17 @@ function configureChannels(){
     if(!url){link.hidden=true;return}link.href=url;link.target="_blank";link.rel="noopener";
     link.addEventListener("click",()=>track("social_click",{channel:name}));
   }));
-  qsa("[data-email]").forEach(link=>{if(!SITE_CONFIG.institutionalEmail){link.hidden=true}else{link.href=`mailto:${SITE_CONFIG.institutionalEmail}`;link.textContent=SITE_CONFIG.institutionalEmail}});
+  qsa("[data-email]").forEach(link=>{if(!SITE_CONFIG.institutionalEmail){link.hidden=true}else{link.href=`mailto:${SITE_CONFIG.institutionalEmail}`}});
+}
+
+function addFloatingWhatsApp(){
+  if(!qs("[data-whatsapp]")||qs(".whatsapp-float"))return;
+  const link=document.createElement("a");
+  link.className="whatsapp-float";
+  link.href="#";link.dataset.whatsapp="";link.dataset.placement="floating";
+  link.setAttribute("aria-label","Conversar pelo WhatsApp");
+  link.innerHTML='<img src="assets/icon-whatsapp.svg" alt="" width="29" height="29">';
+  document.body.append(link);
 }
 
 function bindMenu(){
@@ -88,7 +104,20 @@ function bindLeadForm(){
   });
 }
 
+function bindReveals(){
+  if(!("IntersectionObserver" in window))return;
+  const elements=qsa("main > section,.card,.service-card,.step");
+  const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{
+    if(entry.isIntersecting){entry.target.classList.add("is-visible");observer.unobserve(entry.target)}
+  }),{threshold:.08,rootMargin:"0px 0px -30px"});
+  elements.forEach((element,index)=>{
+    element.classList.add("reveal");
+    element.style.setProperty("--reveal-delay",`${(index%4)*55}ms`);
+    observer.observe(element);
+  });
+}
+
 document.addEventListener("DOMContentLoaded",()=>{
-  captureAttribution();configureChannels();bindMenu();bindLeadForm();
+  captureAttribution();addFloatingWhatsApp();configureChannels();bindMenu();bindLeadForm();bindReveals();
   qs("[data-year]")?.replaceChildren(String(new Date().getFullYear()));
 });

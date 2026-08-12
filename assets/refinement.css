@@ -1,0 +1,402 @@
+:root {
+  --plum-deep: #432c35;
+  --plum: #5c3d49;
+  --plum-soft: #75515e;
+  --rose: #b88794;
+  --cream: #fffdfb;
+  --warm-white: #faf7f4;
+  --line-soft: #e7deda;
+  --shadow-soft: 0 14px 42px rgba(61, 39, 48, .09);
+  --shadow-lift: 0 22px 58px rgba(61, 39, 48, .15);
+}
+
+body {
+  background: var(--warm-white);
+  color: #332d30;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.site-header {
+  background: rgba(255, 253, 251, .88);
+  border-bottom-color: rgba(92, 61, 73, .12);
+  box-shadow: 0 8px 28px rgba(61, 39, 48, .035);
+}
+
+.nav { height: 78px; }
+
+.brand { gap: 12px; }
+
+.brand-mark {
+  width: 58px;
+  height: 42px;
+  border-radius: 0;
+  background: transparent;
+  overflow: visible;
+}
+
+.brand-mark img {
+  width: 58px;
+  height: 36px;
+  object-fit: contain;
+}
+
+.brand strong {
+  font-size: .94rem;
+  letter-spacing: .01em;
+}
+
+.brand small { font-size: .68rem; }
+
+.nav-links a {
+  position: relative;
+  padding: 8px 0;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 2px;
+  left: 0;
+  height: 1px;
+  background: var(--rose);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform .22s ease;
+}
+
+.nav-links a:hover::after,
+.nav-links a[aria-current="page"]::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.nav-cta,
+.button,
+a.button,
+button.button {
+  min-height: 44px;
+  border: 1px solid var(--plum);
+  border-radius: 12px;
+  background: var(--plum);
+  color: #fff !important;
+  box-shadow: 0 9px 22px rgba(92, 61, 73, .16);
+  letter-spacing: .01em;
+}
+
+.nav-cta:hover,
+.button:hover,
+a.button:hover,
+button.button:hover {
+  border-color: var(--plum-deep);
+  background: var(--plum-deep);
+  color: #fff !important;
+  box-shadow: 0 13px 28px rgba(92, 61, 73, .22);
+}
+
+.button.secondary,
+a.button.secondary {
+  background: transparent;
+  color: var(--plum) !important;
+  box-shadow: none;
+}
+
+.button.secondary:hover,
+a.button.secondary:hover {
+  background: var(--plum);
+  color: #fff !important;
+}
+
+.card .button,
+.service-card .button {
+  display: inline-flex;
+  color: #fff !important;
+}
+
+.button-icon {
+  width: 17px;
+  height: 17px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
+.hero-grid {
+  min-height: 590px;
+  grid-template-columns: minmax(0, 1.22fr) minmax(300px, .78fr);
+  gap: 58px;
+  padding: 62px 0;
+}
+
+.hero h1 { max-width: 720px; }
+
+.hero .portrait-wrap {
+  width: min(100%, 390px);
+  justify-self: end;
+  padding: 20px;
+}
+
+.split .portrait-wrap {
+  width: min(100%, 430px);
+  margin-inline: auto;
+}
+
+.hero .portrait {
+  width: 100%;
+  max-height: 475px;
+  border-radius: 190px 190px 22px 22px;
+}
+
+.hero .portrait-card {
+  left: -20px;
+  bottom: 42px;
+}
+
+.visual-intro {
+  position: relative;
+  margin-top: -24px;
+  padding: 0 0 72px;
+  background: linear-gradient(180deg, transparent 0, var(--cream) 55%);
+}
+
+.visual-panorama {
+  position: relative;
+  min-height: 330px;
+  overflow: hidden;
+  border: 8px solid rgba(255, 255, 255, .92);
+  border-radius: 28px;
+  background: linear-gradient(90deg, rgba(42, 31, 35, .06), transparent), url("servicos-visuais-v1.webp") center/cover no-repeat;
+  box-shadow: var(--shadow-lift);
+}
+
+.visual-panorama::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 45%, rgba(47, 34, 39, .72));
+}
+
+.visual-labels {
+  position: absolute;
+  z-index: 2;
+  right: 24px;
+  bottom: 22px;
+  left: 24px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.visual-labels span {
+  color: #fff;
+  font-size: .74rem;
+  font-weight: 800;
+  letter-spacing: .05em;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, .45);
+}
+
+.page-hero {
+  position: relative;
+  overflow: hidden;
+  padding: 74px 0;
+}
+
+.page-hero::before {
+  content: "";
+  position: absolute;
+  width: 340px;
+  height: 340px;
+  right: -150px;
+  top: -180px;
+  border: 1px solid rgba(117, 81, 94, .18);
+  border-radius: 50%;
+}
+
+.page-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(290px, .85fr);
+  align-items: center;
+  gap: 58px;
+}
+
+.page-hero-copy { position: relative; z-index: 1; }
+.page-hero-copy h1 { margin-bottom: 18px; }
+
+.service-visual {
+  min-height: 360px;
+  border: 7px solid rgba(255, 255, 255, .9);
+  border-radius: 24px 110px 24px 24px;
+  background-image: url("servicos-visuais-v1.webp");
+  background-repeat: no-repeat;
+  background-size: 300% 100%;
+  box-shadow: var(--shadow-lift);
+}
+
+.service-visual--documents { background-position: left center; }
+.service-visual--ergonomics { background-position: center center; }
+.service-visual--consultation { background-position: right center; }
+
+.card,
+.service-card,
+.step {
+  border-color: var(--line-soft);
+  box-shadow: var(--shadow-soft);
+  transition: transform .24s ease, box-shadow .24s ease, border-color .24s ease;
+}
+
+.card:hover,
+.service-card:hover,
+.step:hover {
+  transform: translateY(-5px);
+  border-color: rgba(184, 135, 148, .55);
+  box-shadow: var(--shadow-lift);
+}
+
+.contact-panel { box-shadow: var(--shadow-lift); }
+
+.contact-link {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  border-radius: 8px;
+  padding: 12px 8px;
+}
+
+.contact-link img {
+  width: 19px;
+  height: 19px;
+  filter: brightness(0) invert(1);
+}
+
+.form { box-shadow: var(--shadow-soft); }
+
+.footer { padding-top: 60px; }
+
+.footer .brand-mark img { filter: brightness(0) invert(1); }
+
+.footer .socials {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px;
+}
+
+.footer .social-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  margin: 0;
+  padding: 10px 11px;
+  border: 1px solid rgba(255, 255, 255, .14);
+  border-radius: 12px;
+  transition: background .2s ease, border-color .2s ease, transform .2s ease;
+}
+
+.footer .social-link:hover {
+  border-color: rgba(255, 255, 255, .3);
+  background: rgba(255, 255, 255, .06);
+  text-decoration: none;
+  transform: translateY(-2px);
+}
+
+.social-link img {
+  width: 19px;
+  height: 19px;
+  flex: none;
+  filter: brightness(0) invert(1);
+}
+
+.social-link span { min-width: 0; }
+
+.social-link b,
+.social-link small {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.social-link b { color: #fff; font-size: .72rem; }
+.social-link small { color: #a99da0; font-size: .61rem; }
+
+.whatsapp-float {
+  position: fixed;
+  z-index: 60;
+  right: 22px;
+  bottom: 22px;
+  display: grid;
+  width: 58px;
+  height: 58px;
+  place-items: center;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  background: #25d366;
+  color: #fff;
+  box-shadow: 0 12px 30px rgba(20, 95, 54, .28);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.whatsapp-float:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 16px 36px rgba(20, 95, 54, .36);
+}
+
+.whatsapp-float img {
+  width: 29px;
+  height: 29px;
+  filter: brightness(0) invert(1);
+}
+
+.js .reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity .65s ease var(--reveal-delay, 0ms), transform .65s ease var(--reveal-delay, 0ms);
+}
+
+.js .reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (max-width: 980px) {
+  .nav-links { gap: 16px; }
+  .page-hero-grid { gap: 35px; }
+  .footer .socials { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 900px) {
+  .hero-grid,
+  .page-hero-grid { grid-template-columns: 1fr; }
+
+  .hero .portrait-wrap {
+    width: min(88%, 365px);
+    justify-self: center;
+  }
+
+  .service-visual {
+    min-height: 330px;
+    border-radius: 22px 82px 22px 22px;
+  }
+
+  .nav-links a { padding: 10px 6px; }
+  .footer .socials { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 600px) {
+  .brand small { display: none; }
+  .brand strong { font-size: .84rem; }
+  .brand-mark, .brand-mark img { width: 49px; }
+  .hero-grid { padding: 42px 0 55px; }
+  .hero .portrait { max-height: 410px; }
+  .page-hero { padding: 58px 0; }
+  .service-visual { min-height: 270px; }
+  .visual-panorama { min-height: 390px; background-position: center; }
+  .visual-labels { grid-template-columns: 1fr; gap: 6px; }
+  .footer .socials { grid-template-columns: 1fr; }
+  .whatsapp-float { right: 15px; bottom: 15px; width: 54px; height: 54px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .reveal { opacity: 1; transform: none; transition: none; }
+  .card, .service-card, .step, .whatsapp-float { transition: none; }
+}
