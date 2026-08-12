@@ -8,7 +8,7 @@
     {"id": "tiktok", "status": "pending_account", "future": "Business Account, conteúdo e Instant Forms"},
     {"id": "google_business", "status": "pending_account_setup", "future": "Perfil da Empresa, avaliações e mensuração local"},
     {"id": "search_console", "status": "pending_account_verification", "future": "Verificação DNS e sitemap"},
-    {"id": "linkedin", "status": "recommended_manual", "future": "Perfil profissional e relacionamento B2B"}
+    {"id": "linkedin", "status": "active_profile", "url": "https://www.linkedin.com/in/fernanda-soares-02aa25269/", "future": "Conteúdo profissional e relacionamento B2B"}
   ],
   "infrastructure": [
     {"id": "resend", "status": "prepared_disabled", "purpose": "resposta transacional e notificações do formulário"},

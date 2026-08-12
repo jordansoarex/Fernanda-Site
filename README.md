@@ -7,6 +7,7 @@ WhatsApp; não existe banco público de contatos.
 ## Acessos
 
 - Zoho Mail: serviço externo oficial.
+- LinkedIn profissional: `https://www.linkedin.com/in/fernanda-soares-02aa25269/`.
 - Radar de Perícias: `radar.fernandafsoares.com.br`, protegido por Cloudflare Access.
 - Estúdio de Conteúdo: `studio.fernandafsoares.com.br`, protegido por Cloudflare Access.
 

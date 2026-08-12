@@ -1,6 +1,7 @@
 const SITE_CONFIG={
   whatsapp:"5592993547755",
   instagram:"https://instagram.com/fernandafisio_pericias",
+  linkedin:"https://www.linkedin.com/in/fernanda-soares-02aa25269/",
   facebook:"",
   tiktok:"",
   googleBusiness:"",
@@ -44,7 +45,7 @@ function configureChannels(){
     link.target="_blank";link.rel="noopener";
     link.addEventListener("click",()=>track("whatsapp_click",{placement:link.dataset.placement||"site"}));
   });
-  const channels={instagram:SITE_CONFIG.instagram,facebook:SITE_CONFIG.facebook,tiktok:SITE_CONFIG.tiktok,googleBusiness:SITE_CONFIG.googleBusiness};
+  const channels={instagram:SITE_CONFIG.instagram,linkedin:SITE_CONFIG.linkedin,facebook:SITE_CONFIG.facebook,tiktok:SITE_CONFIG.tiktok,googleBusiness:SITE_CONFIG.googleBusiness};
   Object.entries(channels).forEach(([name,url])=>qsa(`[data-channel="${name}"]`).forEach(link=>{
     if(!url){link.hidden=true;return}link.href=url;link.target="_blank";link.rel="noopener";
     link.addEventListener("click",()=>track("social_click",{channel:name}));
