@@ -6,8 +6,8 @@
     {"id": "instagram", "status": "active_organic", "handle": "@fernandafisio_pericias", "future": "Meta Business Suite e campanhas"},
     {"id": "facebook", "status": "pending_account", "future": "Página empresarial, caixa unificada e Lead Ads"},
     {"id": "tiktok", "status": "pending_account", "future": "Business Account, conteúdo e Instant Forms"},
-    {"id": "google_business", "status": "pending_domain", "future": "Perfil da Empresa, avaliações e mensuração local"},
-    {"id": "search_console", "status": "pending_domain", "future": "Verificação DNS e sitemap"},
+    {"id": "google_business", "status": "pending_account_setup", "future": "Perfil da Empresa, avaliações e mensuração local"},
+    {"id": "search_console", "status": "pending_account_verification", "future": "Verificação DNS e sitemap"},
     {"id": "linkedin", "status": "recommended_manual", "future": "Perfil profissional e relacionamento B2B"}
   ],
   "infrastructure": [
