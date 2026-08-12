@@ -2,20 +2,17 @@
   "version": 1,
   "policy": "Nenhuma integração que envie dados ou carregue pixels é ativada sem configuração, finalidade e consentimento aplicáveis.",
   "channels": [
-    {"id": "whatsapp", "status": "active_cta", "mode": "wa.me", "future": "WhatsApp Business Platform e webhooks"},
-    {"id": "instagram", "status": "active_organic", "handle": "@fernandafisio_pericias", "future": "Meta Business Suite e campanhas"},
-    {"id": "facebook", "status": "pending_account", "future": "Página empresarial, caixa unificada e Lead Ads"},
-    {"id": "tiktok", "status": "pending_account", "future": "Business Account, conteúdo e Instant Forms"},
-    {"id": "google_business", "status": "pending_account_setup", "future": "Perfil da Empresa, avaliações e mensuração local"},
-    {"id": "search_console", "status": "pending_account_verification", "future": "Verificação DNS e sitemap"},
-    {"id": "linkedin", "status": "active_profile", "url": "https://www.linkedin.com/in/fernanda-soares-02aa25269/", "future": "Conteúdo profissional e relacionamento B2B"}
+    {"id": "instagram", "status": "active_organic", "handle": "@fernandafisio_pericias"},
+    {"id": "linkedin", "status": "active_profile", "url": "https://www.linkedin.com/in/fernanda-soares-02aa25269/"},
+    {"id": "email", "status": "active", "address": "contato@fernandafsoares.com.br"},
+    {"id": "whatsapp", "status": "active_cta", "mode": "wa.me"}
   ],
   "infrastructure": [
     {"id": "resend", "status": "prepared_disabled", "purpose": "resposta transacional e notificações do formulário"},
     {"id": "crm_webhook", "status": "schema_ready_disabled", "schema": "lead-capture.schema.json"},
     {"id": "cloudflare_web_analytics", "status": "recommended_disabled", "purpose": "métricas agregadas do site"},
-    {"id": "meta_pixel", "status": "disabled", "requires": "campanha, política e gestão de consentimento"},
-    {"id": "tiktok_pixel", "status": "disabled", "requires": "campanha, política e gestão de consentimento"},
+    {"id": "google_business", "status": "pending_private_address_verification", "purpose": "presença local e avaliações"},
+    {"id": "search_console", "status": "active_sitemap_submitted", "purpose": "indexação e acompanhamento orgânico"},
     {"id": "turnstile", "status": "prepared_disabled", "purpose": "antispam do formulário"}
   ]
 }

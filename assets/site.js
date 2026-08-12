@@ -2,9 +2,6 @@ const SITE_CONFIG={
   whatsapp:"5592993547755",
   instagram:"https://instagram.com/fernandafisio_pericias",
   linkedin:"https://www.linkedin.com/in/fernanda-soares-02aa25269/",
-  facebook:"",
-  tiktok:"",
-  googleBusiness:"",
   institutionalEmail:"contato@fernandafsoares.com.br",
   leadEndpoint:""
 };
@@ -14,7 +11,7 @@ const qsa=(selector,root=document)=>[...root.querySelectorAll(selector)];
 
 function captureAttribution(){
   const params=new URLSearchParams(location.search);
-  const keys=["utm_source","utm_medium","utm_campaign","utm_content","utm_term","gclid","fbclid","ttclid"];
+  const keys=["utm_source","utm_medium","utm_campaign","utm_content","utm_term","gclid"];
   const current={};
   keys.forEach(key=>{if(params.get(key))current[key]=params.get(key)});
   if(Object.keys(current).length){
@@ -45,7 +42,7 @@ function configureChannels(){
     link.target="_blank";link.rel="noopener";
     link.addEventListener("click",()=>track("whatsapp_click",{placement:link.dataset.placement||"site"}));
   });
-  const channels={instagram:SITE_CONFIG.instagram,linkedin:SITE_CONFIG.linkedin,facebook:SITE_CONFIG.facebook,tiktok:SITE_CONFIG.tiktok,googleBusiness:SITE_CONFIG.googleBusiness};
+  const channels={instagram:SITE_CONFIG.instagram,linkedin:SITE_CONFIG.linkedin};
   Object.entries(channels).forEach(([name,url])=>qsa(`[data-channel="${name}"]`).forEach(link=>{
     if(!url){link.hidden=true;return}link.href=url;link.target="_blank";link.rel="noopener";
     link.addEventListener("click",()=>track("social_click",{channel:name}));
@@ -56,7 +53,11 @@ function configureChannels(){
 function bindMenu(){
   const button=qs(".menu-button"),links=qs(".nav-links");
   if(!button||!links)return;
+  const closeMenu=()=>{links.classList.remove("open");button.setAttribute("aria-expanded","false")};
   button.addEventListener("click",()=>{const open=links.classList.toggle("open");button.setAttribute("aria-expanded",String(open))});
+  links.addEventListener("click",event=>{if(event.target.closest("a"))closeMenu()});
+  document.addEventListener("keydown",event=>{if(event.key==="Escape")closeMenu()});
+  window.addEventListener("resize",()=>{if(window.innerWidth>900)closeMenu()});
 }
 
 function bindLeadForm(){
