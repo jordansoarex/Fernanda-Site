@@ -1,0 +1,57 @@
+/* Ajustes de legibilidade e consistência para CTAs. */
+a.button,
+button.button,
+.card a.button,
+.service-card a.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  color: #fff !important;
+  background: #5c3d49;
+  border: 1px solid #5c3d49;
+  text-decoration: none;
+}
+
+a.button:hover,
+button.button:hover,
+.card a.button:hover,
+.service-card a.button:hover {
+  color: #fff !important;
+  background: #432c35;
+  border-color: #432c35;
+  text-decoration: none;
+}
+
+a.button.secondary,
+.card a.button.secondary,
+.service-card a.button.secondary {
+  color: #5c3d49 !important;
+  background: transparent;
+  border-color: #5c3d49;
+}
+
+a.button.secondary:hover,
+.card a.button.secondary:hover,
+.service-card a.button.secondary:hover {
+  color: #fff !important;
+  background: #5c3d49;
+}
+
+a.button:focus-visible,
+button.button:focus-visible,
+.nav-cta:focus-visible {
+  outline: 3px solid #c695a3;
+  outline-offset: 3px;
+}
+
+@media (max-width: 600px) {
+  a.button,
+  button.button,
+  .card a.button,
+  .service-card a.button {
+    width: 100%;
+    white-space: normal;
+    text-align: center;
+  }
+}
