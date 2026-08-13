@@ -135,6 +135,14 @@ a.button.secondary:hover { background: var(--plum); color: #fff !important; }
 .profile-intro { grid-template-columns: minmax(280px,.78fr) minmax(0,1.22fr); }
 .profile-intro .portrait-wrap { width: min(100%,360px); padding: 18px; }
 .profile-photo { max-height: 475px; object-position: center 10%; }
+.about-story p { color: var(--muted); }
+.about-story p + p { margin-top: 15px; }
+.about-city { overflow: hidden; background: linear-gradient(145deg, #fff 0%, #f8eef0 100%); }
+.about-city-grid { display: grid; grid-template-columns: minmax(260px, .72fr) minmax(0, 1.28fr); align-items: center; gap: 48px; }
+.about-city-grid > div p { max-width: 470px; color: var(--muted); }
+.about-video-frame { position: relative; margin: 0; overflow: hidden; border: 7px solid rgba(255,255,255,.92); border-radius: 24px 90px 24px 24px; background: var(--plum-deep); box-shadow: var(--shadow-lift); }
+.about-video-frame video { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+.about-video-frame figcaption { position: absolute; right: 14px; bottom: 12px; padding: 7px 10px; border-radius: 999px; background: rgba(47,34,39,.74); color: #fff; font-size: .68rem; letter-spacing: .03em; backdrop-filter: blur(6px); }
 .credentials { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
 .credential { min-width: 145px; padding: 12px 15px; border: 1px solid var(--line-soft); border-radius: 12px; background: #fff; color: var(--muted); font-size: .75rem; box-shadow: var(--shadow-soft); }
 .credential b { display: block; color: var(--plum); font-size: .67rem; letter-spacing: .06em; text-transform: uppercase; }
@@ -190,6 +198,7 @@ a.button.secondary:hover { background: var(--plum); color: #fff !important; }
   .nav-links a { padding: 10px 6px; }
   .footer .socials { grid-template-columns: repeat(2,minmax(0,1fr)); }
   .profile-intro { grid-template-columns: 1fr; }
+  .about-city-grid { grid-template-columns: 1fr; gap: 28px; }
   .profile-grid { grid-template-columns: 1fr; }
   .revenue-grid { grid-template-columns: 1fr; }
   .revenue-card { min-height: 0; }
@@ -203,6 +212,8 @@ a.button.secondary:hover { background: var(--plum); color: #fff !important; }
   .hero .portrait { max-height: 410px; }
   .page-hero { padding: 58px 0; }
   .service-visual { min-height: 270px; }
+  .about-video-frame { border-width: 5px; border-radius: 18px 48px 18px 18px; }
+  .about-video-frame figcaption { right: 9px; bottom: 8px; font-size: .6rem; }
   .visual-panorama { min-height: 390px; background-position: center; }
   .visual-labels { grid-template-columns: 1fr; gap: 6px; }
   .footer .socials { grid-template-columns: 1fr; }
