@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /acesso.html
 
 Sitemap: https://fernandafsoares.com.br/sitemap.xml
