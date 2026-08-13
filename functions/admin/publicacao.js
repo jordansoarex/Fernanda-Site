@@ -12,6 +12,7 @@ export async function onRequestPost({ request, env }) {
   catch { return new Response("Payload too large", { status: 413 }); }
   if (!requireCsrf(form, session)) return new Response("Forbidden", { status: 403 });
 
+  const id = String(form.get("id") || "").trim().slice(0, 80);
   const title = String(form.get("title") || "").trim().slice(0, 140);
   const summary = String(form.get("summary") || "").trim().slice(0, 320);
   const body = String(form.get("body") || "").trim().slice(0, 8000);
@@ -20,16 +21,32 @@ export async function onRequestPost({ request, env }) {
 
   const now = new Date().toISOString();
   const posts = await loadPosts(env.SITE_ADMIN);
-  posts.unshift({
-    id: crypto.randomUUID(),
-    title,
-    summary,
-    body,
-    status,
-    createdAt: now,
-    updatedAt: now,
-    publishedAt: status === "published" ? now : null
-  });
+  const index = id ? posts.findIndex(post => post.id === id) : -1;
+
+  if (index >= 0) {
+    const previous = posts[index];
+    posts[index] = {
+      ...previous,
+      title,
+      summary,
+      body,
+      status,
+      updatedAt: now,
+      publishedAt: status === "published" ? (previous.publishedAt || now) : null
+    };
+  } else {
+    posts.unshift({
+      id: crypto.randomUUID(),
+      title,
+      summary,
+      body,
+      status,
+      createdAt: now,
+      updatedAt: now,
+      publishedAt: status === "published" ? now : null
+    });
+  }
+
   await savePosts(env.SITE_ADMIN, posts);
   return redirect("/acesso?ok=post");
 }
