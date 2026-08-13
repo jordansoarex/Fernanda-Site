@@ -22,7 +22,17 @@ function track(name,detail={}){window.dataLayer=window.dataLayer||[];window.data
 function whatsappUrl(message,source){const suffix=source?`\n\nOrigem: ${source}`:"";return `https://wa.me/${SITE_CONFIG.whatsapp}?text=${encodeURIComponent(message+suffix)}`}
 
 function configureChannels(){
-  qsa("[data-whatsapp]").forEach(link=>{const message=link.dataset.message||"Olá, Fernanda. Gostaria de conversar sobre apoio técnico pericial.";link.href=whatsappUrl(message,"Site");link.target="_blank";link.rel="noopener noreferrer";if(link.matches(".button,.nav-cta")&&!link.querySelector(".button-icon")){const icon=document.createElement("img");icon.className="button-icon";icon.src="assets/icon-whatsapp.svg";icon.alt="";link.prepend(icon)}link.addEventListener("click",()=>track("whatsapp_click",{placement:link.dataset.placement||"site"}))});
+  qsa("[data-whatsapp]").forEach(link=>{
+    const message="Olá, Fernanda. Gostaria de conversar sobre apoio técnico pericial.";
+    link.href=whatsappUrl(message,"Site");
+    link.target="_blank";link.rel="noopener";
+    if(link.matches(".button,.nav-cta")&&!link.querySelector(".button-icon")){
+      const icon=document.createElement("img");
+      icon.className="button-icon";icon.src="assets/icon-whatsapp.svg";icon.alt="";
+      link.prepend(icon);
+    }
+    link.addEventListener("click",()=>track("whatsapp_click",{placement:link.dataset.placement||"site"}));
+  });
   const channels={instagram:SITE_CONFIG.instagram,linkedin:SITE_CONFIG.linkedin};
   Object.entries(channels).forEach(([name,url])=>qsa(`[data-channel="${name}"]`).forEach(link=>{if(!url){link.hidden=true;return}link.href=url;link.target="_blank";link.rel="noopener noreferrer";link.addEventListener("click",()=>track("social_click",{channel:name}))}));
   qsa("[data-email]").forEach(link=>{if(!SITE_CONFIG.institutionalEmail)link.hidden=true;else link.href=`mailto:${SITE_CONFIG.institutionalEmail}`});
@@ -34,7 +44,29 @@ function bindMenu(){const button=qs(".menu-button"),links=qs(".nav-links");if(!b
 
 function bindLeadForm(){
   const form=qs("[data-lead-form]");if(!form)return;
-  form.addEventListener("submit",event=>{event.preventDefault();const status=qs(".form-status",form),data=Object.fromEntries(new FormData(form).entries());if(!data.privacy_consent){status.textContent="Confirme o aviso de privacidade para continuar.";return}const attribution=captureAttribution();const payload={name:String(data.name||"").trim(),company:String(data.company||"").trim(),role:String(data.role||"").trim(),service:String(data.service||"").trim(),message:String(data.message||"").trim(),privacy_consent:true,source:"institutional_site",attribution};track("lead_form_submit",{service:payload.service,source:attribution.utm_source||"direct"});const message=`Olá, Fernanda. Meu nome é ${payload.name}${payload.company?`, da ${payload.company}`:""}. Tenho interesse em ${payload.service}. ${payload.message}`.trim();location.href=whatsappUrl(message,attribution.utm_source||"formulario-site")});
+  form.addEventListener("submit",async event=>{
+    event.preventDefault();
+    const status=qs(".form-status",form),data=Object.fromEntries(new FormData(form).entries());
+    if(!data.privacy_consent){status.textContent="Confirme o aviso de privacidade para continuar.";return}
+    const attribution=captureAttribution();
+    const payload={
+      name:String(data.name||"").trim(),company:String(data.company||"").trim(),
+      role:String(data.role||"").trim(),service:String(data.service||"").trim(),
+      message:String(data.message||"").trim(),privacy_consent:true,
+      consent_at:new Date().toISOString(),source:"institutional_site",attribution,
+      page_url:location.href
+    };
+    track("lead_form_submit",{service:payload.service,source:attribution.utm_source||"direct"});
+    if(SITE_CONFIG.leadEndpoint){
+      try{
+        const response=await fetch(SITE_CONFIG.leadEndpoint,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)});
+        if(!response.ok)throw new Error("capture_failed");
+        status.textContent="Solicitação recebida. Retornaremos pelo canal informado.";form.reset();return;
+      }catch{status.textContent="Não foi possível enviar pelo formulário. Abrindo o WhatsApp…"}
+    }
+    const message=`Olá, Fernanda. Meu nome é ${payload.name}${payload.company?`, da ${payload.company}`:""}. Tenho interesse em ${payload.service}. ${payload.message}`.trim();
+    location.href=whatsappUrl(message,attribution.utm_source||"formulario-site");
+  });
 }
 
 function bindReveals(){if(!("IntersectionObserver" in window))return;const elements=qsa("main > section,.card,.service-card,.step");const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add("is-visible");observer.unobserve(entry.target)}}),{threshold:.08,rootMargin:"0px 0px -30px"});elements.forEach((element,index)=>{element.classList.add("reveal");element.style.setProperty("--reveal-delay",`${(index%4)*55}ms`);observer.observe(element)})}

@@ -36,7 +36,7 @@ export async function savePosts(store, posts) {
 }
 
 function layout(title, body) {
-  return `<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow,noarchive,nosnippet"><title>${htmlEscape(title)} | Fernanda Soares</title><link rel="icon" type="image/jpeg" href="/assets/fernanda-soares.jpeg"><link rel="stylesheet" href="/assets/styles.css"><link rel="stylesheet" href="/assets/refinement.css"><link rel="stylesheet" href="/assets/admin.css"></head><body class="admin-body">${body}</body></html>`;
+  return `<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow,noarchive,nosnippet"><title>${htmlEscape(title)} | Fernanda Soares</title><link rel="icon" type="image/png" href="/assets/fernanda-soares-clean.png"><link rel="stylesheet" href="/assets/styles.css"><link rel="stylesheet" href="/assets/refinement.css"><link rel="stylesheet" href="/assets/admin.css"></head><body class="admin-body">${body}</body></html>`;
 }
 
 export function renderLogin(error = "") {

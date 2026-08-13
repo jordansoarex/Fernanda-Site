@@ -50,3 +50,12 @@ Configurar no ambiente de produção, sem versionar valores:
 ## Estado de implantação
 
 O código pode ser revisado e integrado somente quando os bindings/secrets do ambiente estiverem prontos. Até lá, manter a implementação em branch/PR e não expor uma versão parcialmente configurada em produção.
+
+### Verificação em 13/08/2026
+
+- A implementação foi sincronizada com o `main`, incluindo currículo, portfólio, fotografia limpa e correções de contraste.
+- A compilação local das Pages Functions foi concluída com o binding KV local `SITE_ADMIN`.
+- O login local respondeu `401` para credencial inválida e `303` para credencial válida; o cookie emitido contém `HttpOnly`, `Secure` e `SameSite=Strict`.
+- A persistência local confirmou que rascunhos não são retornados pela API pública.
+- O domínio público ainda recebe conteúdo do GitHub Pages por trás da Cloudflare. A troca para Cloudflare Pages deve ocorrer somente depois de criar o projeto, configurar KV/secrets e validar a URL de prévia.
+- O acesso ao painel Cloudflare exige o código do autenticador da conta. Nenhuma configuração de produção foi alterada sem essa verificação.
