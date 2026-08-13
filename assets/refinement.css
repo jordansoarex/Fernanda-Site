@@ -83,6 +83,7 @@ button.button {
   color: #fff !important;
   box-shadow: 0 9px 22px rgba(92, 61, 73, .16);
   letter-spacing: .01em;
+  text-decoration: none;
 }
 
 .nav-cta:hover,
@@ -93,6 +94,7 @@ button.button:hover {
   background: var(--plum-deep);
   color: #fff !important;
   box-shadow: 0 13px 28px rgba(92, 61, 73, .22);
+  text-decoration: none;
 }
 
 .button.secondary,
@@ -109,9 +111,42 @@ a.button.secondary:hover {
 }
 
 .card .button,
-.service-card .button {
+.card a.button,
+.service-card .button,
+.service-card a.button {
   display: inline-flex;
+  align-items: center;
+  justify-content: center;
   color: #fff !important;
+  background: var(--plum);
+  border-color: var(--plum);
+  text-decoration: none;
+}
+
+.card .button:hover,
+.card a.button:hover,
+.service-card .button:hover,
+.service-card a.button:hover {
+  color: #fff !important;
+  background: var(--plum-deep);
+  border-color: var(--plum-deep);
+  text-decoration: none;
+}
+
+.card .button.secondary,
+.card a.button.secondary,
+.service-card .button.secondary,
+.service-card a.button.secondary {
+  color: var(--plum) !important;
+  background: transparent;
+}
+
+.card .button.secondary:hover,
+.card a.button.secondary:hover,
+.service-card .button.secondary:hover,
+.service-card a.button.secondary:hover {
+  color: #fff !important;
+  background: var(--plum);
 }
 
 .button-icon {
@@ -394,6 +429,7 @@ a.button.secondary:hover {
   .visual-labels { grid-template-columns: 1fr; gap: 6px; }
   .footer .socials { grid-template-columns: 1fr; }
   .whatsapp-float { right: 15px; bottom: 15px; width: 54px; height: 54px; }
+  a.button, button.button, .card a.button, .service-card a.button { width: 100%; white-space: normal; text-align: center; }
 }
 
 @media (prefers-reduced-motion: reduce) {
