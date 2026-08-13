@@ -1,0 +1,5 @@
+Contact: mailto:contato@fernandafsoares.com.br
+Canonical: https://fernandafsoares.com.br/.well-known/security.txt
+Preferred-Languages: pt-BR, en
+Policy: https://fernandafsoares.com.br/privacidade.html
+Expires: 2027-08-13T23:59:59Z
