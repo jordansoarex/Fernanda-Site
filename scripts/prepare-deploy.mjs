@@ -13,7 +13,7 @@ await rm(outputDirectory, { recursive: true, force: true });
 await mkdir(outputDirectory, { recursive: true });
 
 const publicDirectories = ["assets", ".well-known"];
-const publicFileNames = new Set(["_headers", "_redirects"]);
+const publicFileNames = new Set(["_headers"]);
 const publicExtensions = new Set([".html", ".xml", ".txt", ".webmanifest"]);
 
 for (const directory of publicDirectories) {
