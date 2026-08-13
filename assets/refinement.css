@@ -163,6 +163,16 @@ a.button.secondary:hover { background: var(--plum); color: #fff !important; }
 .whatsapp-float:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 16px 36px rgba(20,95,54,.36); }
 .whatsapp-float img { width: 29px; height: 29px; filter: brightness(0) invert(1); }
 
+.revenue-section { padding-top: 30px; }
+.revenue-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.revenue-card { display: flex; min-height: 290px; flex-direction: column; padding: 28px; border: 1px solid var(--line-soft); border-radius: 18px; background: #fff; box-shadow: var(--shadow-soft); }
+.revenue-card--urgent { border-color: rgba(92,61,73,.5); background: linear-gradient(145deg,#fff,#f7ecef); }
+.revenue-card .offer-label { display: inline-flex; align-self: flex-start; padding: 5px 9px; border-radius: 999px; background: var(--plum); color: #fff; font-size: .66rem; font-weight: 850; letter-spacing: .06em; text-transform: uppercase; }
+.revenue-card h3 { margin-top: 20px; }
+.revenue-card p { color: var(--muted); font-size: .86rem; }
+.revenue-card ul { margin: 8px 0 20px; padding-left: 18px; color: var(--muted); font-size: .78rem; }
+.revenue-card .button { width: 100%; margin-top: auto; }
+
 .js .reveal { opacity: 0; transform: translateY(18px); transition: opacity .65s ease var(--reveal-delay,0ms), transform .65s ease var(--reveal-delay,0ms); }
 .js .reveal.is-visible { opacity: 1; transform: none; }
 
@@ -181,6 +191,8 @@ a.button.secondary:hover { background: var(--plum); color: #fff !important; }
   .footer .socials { grid-template-columns: repeat(2,minmax(0,1fr)); }
   .profile-intro { grid-template-columns: 1fr; }
   .profile-grid { grid-template-columns: 1fr; }
+  .revenue-grid { grid-template-columns: 1fr; }
+  .revenue-card { min-height: 0; }
 }
 
 @media (max-width: 600px) {
