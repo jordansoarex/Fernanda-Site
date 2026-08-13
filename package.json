@@ -3,7 +3,8 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "deploy": "wrangler pages deploy . --project-name fernanda-site --branch main"
+    "prepare:deploy": "node scripts/prepare-deploy.mjs",
+    "deploy": "npm run prepare:deploy && wrangler pages deploy .dist --project-name fernanda-site --branch main"
   },
   "devDependencies": {
     "wrangler": "latest"
