@@ -38,7 +38,7 @@ function whatsappUrl(message,source){
 
 function configureChannels(){
   qsa("[data-whatsapp]").forEach(link=>{
-    const message=link.dataset.message||"Olá, Fernanda. Gostaria de conversar sobre apoio técnico pericial.";
+    const message="Olá, Fernanda. Gostaria de conversar sobre apoio técnico pericial.";
     link.href=whatsappUrl(message,"Site");
     link.target="_blank";link.rel="noopener";
     if(link.matches(".button,.nav-cta")&&!link.querySelector(".button-icon")){
@@ -85,8 +85,7 @@ function bindLeadForm(){
     const attribution=captureAttribution();
     const payload={
       name:String(data.name||"").trim(),company:String(data.company||"").trim(),
-      role:String(data.role||"").trim(),email:String(data.email||"").trim(),
-      phone:String(data.phone||"").trim(),service:String(data.service||"").trim(),
+      role:String(data.role||"").trim(),service:String(data.service||"").trim(),
       message:String(data.message||"").trim(),privacy_consent:true,
       consent_at:new Date().toISOString(),source:"institutional_site",attribution,
       page_url:location.href
